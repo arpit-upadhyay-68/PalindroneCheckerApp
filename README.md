@@ -1,31 +1,44 @@
 # Palindrome Checker App
 
-## 📌 Project Overview
-The Palindrome Checker App is a console-based Java application that validates whether a given string is a palindrome.
+## 📌 Project Description
+The Palindrome Checker App is a console-based Java application that checks whether a given string is a palindrome.
 
-The project focuses on strengthening core Java programming fundamentals and understanding basic data structure concepts.
+This project is designed to strengthen core Java programming fundamentals and introduce basic string manipulation and control flow concepts.
+
+---
+
+## 🎯 Current Use Cases Implemented
+
+### ✅ UC1: Application Entry & Welcome Message
+- Displays application name and version
+- Demonstrates the use of the `main()` method
+- Uses console output with `System.out.println()`
+
+### ✅ UC2: Print a Hardcoded Palindrome Result
+- Uses a hardcoded string (e.g., "madam")
+- Reverses the string using a loop (or StringBuilder)
+- Compares original and reversed strings
+- Prints whether the string is a palindrome
 
 ---
 
 ## 🚀 Features
-- Displays application welcome message
-- Accepts user input from console
-- Checks if a string is a palindrome
-- Case-insensitive comparison
-- Option to ignore spaces and special characters (if implemented)
-- Menu-driven console interface (if implemented)
+- Console-based application
+- Hardcoded palindrome validation
+- Uses conditional statements (`if-else`)
+- Demonstrates string manipulation
 
 ---
 
 ## 🛠 Technologies Used
 - Java
 - JDK 8 or higher
-- Console-based interface
+- Command Line / Terminal
 
 ---
 
 ## ▶ How to Run the Application
 
-### 1️⃣ Compile the program
+### 1️⃣ Compile
 ```bash
 javac PalindromeCheckerApp.java
