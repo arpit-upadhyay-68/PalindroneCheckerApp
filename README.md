@@ -20,6 +20,15 @@ This project is designed to strengthen core Java programming fundamentals and in
 - Compares original and reversed strings
 - Prints whether the string is a palindrome
 
+### ✅ UC3: Palindrome Check Using String Reversal
+Implements string reversal using a for loop
+
+Demonstrates String Immutability in Java
+
+Uses the equals() method for content comparison
+
+Illustrates the performance drawbacks of string concatenation within a loop
+
 ---
 
 ## 🚀 Features
