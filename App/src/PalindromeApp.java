@@ -1,24 +1,22 @@
 import java.util.*;
 
 /**
- * PalindromeApp: Implements UC12 using the Strategy Pattern.
- * This structure encapsulates algorithms into separate strategies
- * that can be swapped at runtime.
+ * PalindromeApp: UC13 - Performance Comparison
+ * Measures and compares execution time across different algorithms.
  */
 public class PalindromeApp {
 
-    // --- 1. THE STRATEGY INTERFACE ---
+    // --- STRATEGY INTERFACE ---
     interface PalindromeStrategy {
         boolean isValid(String input);
     }
 
-    // --- 2. CONCRETE STRATEGY: STACK (LIFO) ---
+    // --- STACK STRATEGY (O(n) Space, O(n) Time) ---
     static class StackStrategy implements PalindromeStrategy {
         @Override
         public boolean isValid(String input) {
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
             Stack<Character> stack = new Stack<>();
-
             for (char c : clean.toCharArray()) stack.push(c);
             for (char c : clean.toCharArray()) {
                 if (c != stack.pop()) return false;
@@ -27,57 +25,59 @@ public class PalindromeApp {
         }
     }
 
-    // --- 3. CONCRETE STRATEGY: DEQUE (Double-Ended) ---
+    // --- DEQUE STRATEGY (O(n) Space, O(n) Time - usually faster exit) ---
     static class DequeStrategy implements PalindromeStrategy {
         @Override
         public boolean isValid(String input) {
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
             Deque<Character> deque = new ArrayDeque<>();
-
             for (char c : clean.toCharArray()) deque.addLast(c);
-
             while (deque.size() > 1) {
-                if (!deque.removeFirst().equals(deque.removeLast())) {
-                    return false;
-                }
+                if (!deque.removeFirst().equals(deque.removeLast())) return false;
             }
             return true;
         }
     }
 
-    // --- 4. MAIN CONTEXT ---
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== UC12: Strategy Pattern Palindrome App ===");
-        System.out.print("Enter text: ");
+        System.out.println("=== UC13: Palindrome Performance Monitor ===");
+        System.out.print("Enter a long string to test performance: ");
         String input = scanner.nextLine();
 
-        System.out.println("\nSelect Strategy:");
-        System.out.println("1. Stack Strategy (Reverses String)");
-        System.out.println("2. Deque Strategy (Shrinks from both ends)");
-        System.out.print("Choice: ");
+        // Prepare strategies
+        PalindromeStrategy stackStr = new StackStrategy();
+        PalindromeStrategy dequeStr = new DequeStrategy();
 
-        int choice = scanner.nextInt();
-        PalindromeStrategy strategy;
+        System.out.println("\nRunning Benchmark...");
+        System.out.println("-------------------------------------------------");
 
-        // Polymorphism: Assigning a concrete implementation to the interface type
-        if (choice == 1) {
-            strategy = new StackStrategy();
-        } else if (choice == 2) {
-            strategy = new DequeStrategy();
+        // 1. Measure Stack Performance
+        long startTimeStack = System.nanoTime();
+        boolean resStack = stackStr.isValid(input);
+        long endTimeStack = System.nanoTime();
+        long durationStack = endTimeStack - startTimeStack;
+
+        // 2. Measure Deque Performance
+        long startTimeDeque = System.nanoTime();
+        boolean resDeque = dequeStr.isValid(input);
+        long endTimeDeque = System.nanoTime();
+        long durationDeque = endTimeDeque - startTimeDeque;
+
+        // DISPLAY RESULTS
+        System.out.printf("%-20s | %-15s | %-10s%n", "Algorithm", "Time (ns)", "Result");
+        System.out.println("-------------------------------------------------");
+        System.out.printf("%-20s | %-15d | %-10s%n", "Stack (LIFO)", durationStack, resStack);
+        System.out.printf("%-20s | %-15d | %-10s%n", "Deque (Double-End)", durationDeque, resDeque);
+        System.out.println("-------------------------------------------------");
+
+        // Simple Analysis
+        if (durationStack < durationDeque) {
+            System.out.println("Winner: Stack Strategy is faster for this input.");
         } else {
-            System.out.println("Invalid choice. Defaulting to Stack.");
-            strategy = new StackStrategy();
+            System.out.println("Winner: Deque Strategy is faster for this input.");
         }
-
-        // Execute the strategy
-        boolean result = strategy.isValid(input);
-
-        System.out.println("\n--- Execution Details ---");
-        System.out.println("Algorithm Used: " + strategy.getClass().getSimpleName());
-        System.out.println("Result: " + (result ? "Success! It is a palindrome." : "Not a palindrome."));
-        System.out.println("--------------------------");
 
         scanner.close();
     }
