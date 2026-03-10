@@ -1,4 +1,10 @@
+ UC4-arraypalindrome
 public class PalindromeUC4 {
+
+
+public class PalindromeUC3 {
+
+main
 
 
     public static void main(String[] args) {
