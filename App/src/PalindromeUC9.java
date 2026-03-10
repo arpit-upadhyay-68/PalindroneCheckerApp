@@ -1,30 +1,24 @@
-public class PalindromeUC10 {
+import java.util.Scanner;
 
-    // Recursive function to check palindrome
-    public static boolean isPalindrome(String str, int start, int end) {
-        // Base condition: if start crosses end, it's a palindrome
-        if (start >= end) {
-            return true;
-        }
-
-        // If characters at start and end don't match
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call for the next inner characters
-        return isPalindrome(str, start + 1, end - 1);
-    }
+public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        // Hardcoded string
-        String word = "121";
 
-        // Check palindrome using recursion
-        if (isPalindrome(word, 0, word.length() - 1)) {
-            System.out.println("The string \"" + word + "\" is a Palindrome.");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a string to check palindrome:");
+        String input = scanner.nextLine();
+
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean result = checker.checkPalindrome(input);
+
+        if (result) {
+            System.out.println("The given string is a Palindrome.");
         } else {
-            System.out.println("The string \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("The given string is NOT a Palindrome.");
         }
+
+        scanner.close();
     }
 }
