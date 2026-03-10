@@ -1,35 +1,19 @@
- UC4-arraypalindrome
-public class PalindromeUC4 {
+import java.util.Stack;
 
-
-public class PalindromeUC3 {
-
-main
-
-
+public class PalindromeUC5 {
     public static void main(String[] args) {
-
-        // Hardcoded string
         String word = "madam";
-
-        // Convert string to character array
-        char[] chars = word.toCharArray();
-
-        int start = 0;
-        int end = chars.length - 1;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
         boolean isPalindrome = true;
-
-        // Two-pointer comparison
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
-
-        // Display result
         if (isPalindrome) {
             System.out.println("The string \"" + word + "\" is a Palindrome.");
         } else {
@@ -37,4 +21,3 @@ main
         }
     }
 }
-
