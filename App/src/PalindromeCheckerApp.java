@@ -1,12 +1,28 @@
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        String word = "madam"; // String literal in constant pool
 
-        // Simple conditional logic for verification
-        if (word.equals(new StringBuilder(word).reverse().toString())) {
-            System.out.println(word + " is a palindrome.");
+public class PalindromeUC3 {
+
+
+
+    public static void main(String[] args) {
+
+        // Original string
+        String original = "madam";
+
+        // Variable to store reversed string
+        String reversed = "";
+
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
+
+        // Compare original and reversed string
+        if (original.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a Palindrome.");
         } else {
-            System.out.println(word + " is not a palindrome.");
+            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
         }
     }
 }
+
+
