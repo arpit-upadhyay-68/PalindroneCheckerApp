@@ -8,7 +8,8 @@ public class PalindromeUC9 {
         }
 
         // If characters at start and end don't match
-        if (str.charAt(start) != str.charAt(end)) {
+        if (str.charAt(start) != str.charAt(end))
+        {
             return false;
         }
 
@@ -16,7 +17,8 @@ public class PalindromeUC9 {
         return isPalindrome(str, start + 1, end - 1);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         String word = "ADA";
 
         // Call recursive function
