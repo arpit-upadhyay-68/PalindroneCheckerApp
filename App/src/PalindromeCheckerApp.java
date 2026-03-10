@@ -1,24 +1,28 @@
-public class PalindromeCheckerApp {
 
-        public static void main(String[] args) {
-            // Application Entry Point
+public class PalindromeUC3 {
 
-            displayWelcomeMessage();
 
-            // Next use case can be called here
-            // For now, we just exit
+
+    public static void main(String[] args) {
+
+        // Original string
+        String original = "madam";
+
+        // Variable to store reversed string
+        String reversed = "";
+
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        private static void displayWelcomeMessage() {
-            System.out.println("=================================");
-            System.out.println("     Palindrome Checker App      ");
-            System.out.println("=================================");
-            System.out.println("Version: 1.0.0");
-            System.out.println("Author: Your Name");
-            System.out.println("---------------------------------");
-            System.out.println("This application checks whether");
-            System.out.println("a given string is a palindrome.");
-            System.out.println("=================================");
+        // Compare original and reversed string
+        if (original.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a Palindrome.");
+        } else {
+            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
         }
     }
+}
+
 
