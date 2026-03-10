@@ -59,6 +59,7 @@ public class PalindromeApp {
         long endTimeStack = System.nanoTime();
         long durationStack = endTimeStack - startTimeStack;
 
+
         // 2. Measure Deque Performance
         long startTimeDeque = System.nanoTime();
         boolean resDeque = dequeStr.isValid(input);
